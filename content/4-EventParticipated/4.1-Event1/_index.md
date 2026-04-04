@@ -99,3 +99,4 @@ The event reinforced my passion for cloud computing and AI/ML, and demonstrated 
 ### Event Photos
 
 ![AWS re:Invent re:Cap HCMC 2025 - Session](/images/4-Event/event1_img.jpg)
+![AWS re:Invent re:Cap HCMC 2025 - Session](/images/4-Event/event1_1.jpg)

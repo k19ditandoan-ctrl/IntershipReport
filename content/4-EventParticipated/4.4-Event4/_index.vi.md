@@ -121,5 +121,5 @@ Cấu trúc thành **3 cấp độ Construct:**
 ### Ảnh Sự Kiện
 
 ![AWS Community Day Vietnam](/images/4-Event/event4.jpg)
-![AWS Community Day Vietnam](/images/4-Event/event4.1.jpg)
+![AWS Community Day Vietnam](/images/4-Event/event4_1.jpg)
 
