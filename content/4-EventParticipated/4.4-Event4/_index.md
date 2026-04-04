@@ -1,309 +1,121 @@
 ---
 title: "Event 4"
-date: 2025-09-09
+date: 2026-04-04
 weight: 4
 chapter: false
 pre: " <b> 4.4. </b> "
 ---
 
-# Summary Report: "AIML & Generative AI on AWS – AWS Cloud Mastery Series #1"
+# Summary Report: "Cloud Mastery Event: Infrastructure as Code"
 
 ### Event Overview
 
-- **Event Name:** AIML & Generative AI on AWS – AWS Cloud Mastery Series #1  
-- **Date:** November 15, 2025  
-- **Role:** Attendee  
-- **Format:** On-site technical session  
-- **Duration:** Full-day session (8:30 AM – 11:00 AM+)
-- **Location:** 26th floor, Bitexco Financial Tower, District 1, Ho Chi Minh City, Vietnam
+- **Event Name:** Cloud Mastery - Infrastructure as Code (IaC)
+- **Date:** April 04, 2026
+- **Role:** Attendee
+- **Topic:** Managing infrastructure through code and tool comparisons (CloudFormation, CDK, Terraform)
 
-This comprehensive technical session was part of the AWS Cloud Mastery Series, focusing specifically on artificial intelligence, machine learning, and generative AI capabilities on AWS. The event provided both theoretical foundations and practical insights into building AI/ML solutions using AWS services.
+This event dove deep into the Infrastructure as Code (IaC) paradigm, exploring how it reshapes the way we deploy and manage cloud infrastructure, along with practical applications and comparisons of the most popular tools available on the AWS ecosystem and multi-cloud environments.
 
-### Session Agenda
+### Detailed Session Content
 
-#### Session 1: AI/ML Overview (8:30 – 9:00 AM)
-**Speaker:** Lam Tuan Kiet
+#### 1. Overview of Infrastructure as Code (IaC)
+**Definition:**
+IaC is the practice of managing, configuring, and provisioning IT infrastructure through code instead of manual processes (ClickOps via the console).
 
-##### Machine Learning Fundamentals
-- **Supervised Learning**: Understanding tasks where models learn from labeled data
-  - Classification: Categorizing data into classes
-  - Regression: Predicting continuous values
-  - Common algorithms and use cases
-- **Deep Learning**: Neural networks and their applications
-  - Multi-layer perceptrons
-  - Convolutional Neural Networks (CNNs) for image processing
-  - Recurrent Neural Networks (RNNs) for sequence data
-  - Transformers architecture
+**Core Functions:**
+- Automate the creation, updating, and deletion of cloud resources.
+- Deploy infrastructure in a reproducible manner across various environments.
 
-##### Foundation Models and Generative AI
-- **Foundation Models**: Large pre-trained models that serve as the base for various tasks
-  - What makes a model a "foundation model"
-  - Benefits of using pre-trained models
-  - Transfer learning concepts
-- **Generative Models**: Models that create new content
-  - Understanding unsupervised learning in the context of generative AI
-  - How generative models differ from discriminative models
-  - Applications: text generation, image generation, code generation
+**The Problem with the Traditional Approach (ClickOps):**
+- Slow execution and time-consuming.
+- Highly prone to human errors.
+- Lack of consistency between environments (Dev, Test, Prod).
+- Difficult to collaborate effectively or audit change history.
 
-##### Prompt Engineering
-- **What is a prompt?**: Understanding prompts as instructions to AI models
-- **Good vs Bad Prompts**: 
-  - Characteristics of effective prompts (clear, specific, contextual)
-  - Common mistakes in prompt design
-  - Examples of poorly constructed prompts and how to improve them
-- **Zero-shot Prompting**: Getting results without examples
-  - When zero-shot works well
-  - Limitations and considerations
-- **Few-shot Prompting**: Providing examples to guide model behavior
-  - How few-shot learning improves results
-  - Best practices for selecting examples
-  - Balancing example quality and quantity
+**Benefits of IaC:**
+- **Automation:** End-to-end process automation.
+- **Reproducibility:** Easily duplicate and scale environments.
+- **Scalability:** Rapidly scale up or down as needed.
+- **Collaboration:** Enables Ops teams to adopt software engineering practices (code reviews, version control).
 
-##### Chain of Thought Reasoning
-- **What is Chain of Thought?**: Breaking down complex problems into steps
-- **Benefits**: Improving reasoning capabilities of language models
-- **Implementation**: How to structure prompts to encourage step-by-step thinking
-- **Applications**: Problem-solving, mathematical reasoning, logical analysis
+#### 2. Popular IaC Tools on AWS
+There are three main tools heavily utilized when working with AWS:
+- **AWS CloudFormation**
+- **AWS CDK (Cloud Development Kit)**
+- **Terraform**
 
-##### Retrieval-Augmented Generation (RAG)
-- **RAG Overview**: Combining retrieval with generation for better accuracy
-- **RAG Flow**: 
-  - **Retrieval**: Finding relevant information from knowledge bases
-  - **Augmentation**: Enhancing prompts with retrieved context
-  - **Generation**: Creating responses based on augmented prompts
-- **Embeddings**: 
-  - What embeddings are and how they represent semantic meaning
-  - Vector embeddings vs traditional keyword search
-  - How embeddings enable semantic search
-- **Amazon Titan Embeddings**: 
-  - AWS's embedding model capabilities
-  - Use cases for Titan embeddings
-  - Integration with other AWS services
-- **RAG Workflows**:
-  - **Data Ingestion Workflow**: Preparing and indexing documents for retrieval
-    - Document processing and chunking
-    - Generating embeddings
-    - Storing in vector databases
-  - **Text Generation Workflow**: Using RAG for query answering
-    - Query processing and embedding
-    - Similarity search
-    - Context augmentation
-    - Response generation
+#### 3. AWS CloudFormation
+**Concept:** AWS's native IaC tool that utilizes YAML or JSON to write templates. Resources are managed in groupings called **Stacks**.
 
-#### Session 2: AWS AI/ML Services (9:00 – 10:00 AM)
-**Speaker:** Dinh Le Hoang Anh
+**Main Components:**
+- **Template:** A declarative blueprint representing the infrastructure to deploy.
+- **Stack:** A collection of actual resources provisioned together as defined by the template.
 
-This session provided a comprehensive overview of AWS's managed AI/ML services beyond Amazon Bedrock, covering specialized services for different use cases.
+**How it Works:**
+- Author the template locally.
+- Upload to S3 or deploy directly via AWS CLI/Console.
+- Configure and deploy the stack.
+- The AWS engine automatically analyzes dependencies and provisions resources accordingly.
 
-##### Computer Vision Services
+**Configuration Drift:**
+- This happens when resources are manually modified outside of CloudFormation management (via Console or CLI).
+- **Drift Detection:** CloudFormation provides a feature to detect these deviations. However, it only notifies the user; the engineer must manually decide whether to update the template to match the new reality or revert the resource configuration.
 
-**Amazon Rekognition**
-- **Image and Video Processing**: Analyzing visual content at scale
-- **Object Recognition**: Identifying and labeling objects in images
-- **Face Detection and Analysis**: 
-  - Detecting faces in images and videos
-  - Face comparison and verification
-  - Facial attribute analysis
-- **Content Moderation**: 
-  - Detecting inappropriate or unsafe content
-  - Custom moderation models
-- **Celebrity Recognition**: Identifying well-known personalities
-- **Custom Labeling**: 
-  - Training custom models for specific recognition tasks
-  - Use cases for domain-specific image classification
-  - Workflow for creating custom models
+#### 4. AWS CDK (Cloud Development Kit)
+**Concept:** An IaC framework that lets you define cloud infrastructure using familiar programming languages (TypeScript, Python, Java, C#, Go) instead of JSON/YAML.
 
-##### Natural Language Processing Services
+**Architecture:** App → Stack → Construct
+Structured into **3 levels of Constructs:**
+- **L1:** Direct 1-to-1 mappings to CloudFormation resources (low-level).
+- **L2:** Higher-level abstractions that incorporate AWS default best-practices.
+- **L3 (Patterns):** Complete, interconnected ecosystems (e.g., an Application Load Balancer combined with Fargate).
 
-**Amazon Translate**
-- **Context-Aware Translation**: Understanding context for better translations
-- **Real-time Translation**: Low-latency translation for applications
-- **Language Identification**: Automatically detecting source language
-- **Custom Terminology**: Using domain-specific translation glossaries
-- **Batch Translation**: Processing large volumes of text
+**Advantages:**
+- Highly developer-friendly.
+- Allows the use of programming logic (if/else, loops) and object-oriented paradigms (inheritance) for code reuse.
+- Integrates smoothly with modern IDE workflows.
 
-**Amazon Textract**
-- **Optical Character Recognition (OCR)**: Extracting text from images and documents
-- **Layout Preservation**: Maintaining document structure and formatting
-- **Form and Table Extraction**: Identifying and extracting structured data
-- **Handwriting Recognition**: Processing handwritten text
-- **Document Analysis**: Understanding document types and extracting key information
+**Important CLI Commands:** 
+`cdk init`, `cdk bootstrap`, `cdk synth`, `cdk deploy`, `cdk destroy`, `cdk diff`, `cdk drift`.
 
-**Amazon Transcribe**
-- **Speech-to-Text Conversion**: Converting audio to text
-- **Speaker Identification**: Distinguishing between different speakers
-- **Content Filtering**: Filtering inappropriate content in transcriptions
-- **Custom Vocabulary**: Improving accuracy with domain-specific terms
-- **Real-time Transcription**: Live transcription capabilities
-- **Multi-language Support**: Transcribing in multiple languages
+#### 5. Terraform
+**Concept:** An open-source IaC tool developed by HashiCorp, utilizing HCL (HashiCorp Configuration Language). Its biggest strength is comprehensive **Multi-cloud** support (AWS, Azure, GCP, on-premise).
 
-**Amazon Polly**
-- **Text-to-Speech**: Converting text to natural-sounding speech
-- **Voice Types**: Multiple voices and languages available
-- **Real-time Synthesis**: Low-latency speech generation
-- **Caching and Replay**: Optimizing for repeated content
-- **SSML Support**: Advanced speech synthesis markup
+**Strengths:**
+- State management through the **State file** (`terraform.tfstate`), allowing for precise tracking of changes.
+- Highly readable and declarative configuration syntax.
+- Broad coverage of cloud provider APIs.
 
-**Amazon Comprehend**
-- **Insight Extraction**: Understanding sentiment, entities, and key phrases
-- **Relationship Extraction**: Identifying relationships between entities
-- **Topic Modeling**: Discovering topics in document collections
-- **Language Detection**: Identifying the language of text
-- **Custom Classification**: Training custom text classifiers
+**Standard Terraform Workflow:**
+`terraform init` → `terraform validate` → `terraform plan` → `terraform apply` → `terraform destroy`.
 
-##### Search and Discovery Services
+**Standard Project Structure:**
+- `main.tf`: Main resources definition.
+- `variables.tf`: Input parameter definitions.
+- `outputs.tf`: Output values after provisioning.
+- `providers.tf`: Cloud provider configurations.
 
-**Amazon Kendra**
-- **Semantic Search**: Understanding meaning, not just keywords
-- **Intelligent Search**: NLP-powered search capabilities
-- **RAG Support**: Integration with retrieval-augmented generation
-- **Enterprise Search**: Searching across multiple data sources
-- **Custom Data Sources**: Connecting to various content repositories
+#### 6. Quick Comparison & Selection Rules
 
-##### Recommendation Services
+| TOOL | PRIMARY STRENGTH | RECOMMENDED USE CASE |
+|---|---|---|
+| **CloudFormation** | Native AWS, free, stable | 100% AWS specific projects, operations-heavy teams |
+| **AWS CDK** | Programming language based, powerful abstractions | Developer-led infrastructure (DevOps), complex logic needs |
+| **Terraform** | Multi-cloud support, massive provider ecosystem | Large corporate systems, cross-cloud strategy, industry standard |
 
-**Amazon Personalize**
-- **Tailored Recommendations**: Creating personalized user experiences
-- **Real-time Recommendations**: Low-latency recommendation generation
-- **Batch Recommendations**: Processing recommendations for large user bases
-- **Custom Models**: Training models on your data
-- **A/B Testing**: Testing different recommendation strategies
+**Rules for Choosing an IaC Tool:**
+1. Is the business locked into a single cloud (AWS) or multi-cloud? (If multi-cloud → lean towards Terraform).
+2. Is the team more Dev-oriented (prefer TypeScript) or Ops-oriented (prefer HCL/YAML)?
+3. Which tool does the existing CI/CD ecosystem support better?
 
-##### Specialized Frameworks
+### Important Insights 
+*(Applicable for practical system design)*
 
-**Pipecat**
-- **Pipeline Framework**: Building voice and multimodal AI agents
-- **Real-time Capabilities**: Optimized for real-time interactions
-- **Use Cases**: Voice assistants, interactive applications
-- **Integration**: Working with AWS services and other AI tools
-
-**Amazon Lookout Family**
-- **Note**: These services have been integrated into other AWS services
-- **Historical Context**: Understanding what Lookout services provided
-- **Migration Path**: How functionality moved to other services
-
-#### Session 3: Amazon Bedrock AgentCore (10:00 – 11:00 AM)
-**Speaker:** Danh Hoang Hieu Nghi
-
-This session focused on building AI agents using Amazon Bedrock AgentCore, covering both the concepts and practical implementation.
-
-##### Agent Frameworks Overview
-- **LangGraph**: Building stateful, multi-actor applications with LLMs
-- **LangChain**: Framework for developing applications powered by language models
-- **LlamaIndex**: Data framework for LLM applications
-- **Comparison**: Understanding when to use each framework
-- **Integration**: How these frameworks work with AWS services
-
-##### Agent Creation Process
-- **Planning Phase**: Defining agent goals and capabilities
-- **Design Phase**: Architecting agent workflows and decision trees
-- **Development Phase**: Implementing agent logic and integrations
-- **Testing Phase**: Validating agent behavior and edge cases
-- **Deployment Phase**: Putting agents into production
-
-##### Production Challenges
-- **Scalability**: Handling increasing load and concurrent users
-- **Reliability**: Ensuring consistent performance and error handling
-- **Monitoring**: Tracking agent performance and user interactions
-- **Cost Management**: Optimizing costs while maintaining quality
-- **Security**: Protecting sensitive data and preventing misuse
-
-##### Amazon Bedrock AgentCore Keywords
-
-**Runtime**
-- **Execution Environment**: Where agents run and execute
-- **Performance Optimization**: Ensuring fast response times
-- **Resource Management**: Allocating and managing compute resources
-
-**Memory**
-- **Conversation History**: Maintaining context across interactions
-- **Long-term Memory**: Storing information for future sessions
-- **Memory Management**: Efficient storage and retrieval strategies
-
-**Identity**
-- **User Identification**: Identifying and authenticating users
-- **Session Management**: Managing user sessions and state
-- **Multi-user Support**: Handling multiple concurrent users
-
-**Gateway**
-- **API Gateway**: Exposing agents through APIs
-- **Integration Points**: Connecting agents to other systems
-- **Request Routing**: Directing requests to appropriate agents
-
-**Code Interpreter**
-- **Code Execution**: Running code within agent workflows
-- **Sandboxing**: Safe execution environment
-- **Use Cases**: Data analysis, calculations, dynamic content generation
-
-**Browser Tool**
-- **Web Interaction**: Enabling agents to interact with web content
-- **Information Retrieval**: Fetching and processing web data
-- **Automation**: Automating web-based tasks
-
-**Observability**
-- **Monitoring**: Tracking agent performance and behavior
-- **Logging**: Recording agent interactions and decisions
-- **Analytics**: Understanding agent usage patterns
-- **Debugging**: Tools for troubleshooting agent issues
-
-##### AgentCore Services for Scale
-- **Multi-agent Systems**: Coordinating multiple agents
-- **Load Balancing**: Distributing load across agent instances
-- **Auto-scaling**: Automatically adjusting capacity
-- **High Availability**: Ensuring agents are always available
-- **Enterprise Features**: Security, compliance, and governance
-
-### Key Technical Learnings
-
-#### AI/ML Fundamentals
-- Clear understanding of the difference between traditional ML, deep learning, and generative AI
-- How foundation models enable new types of applications
-- The importance of prompt engineering in getting good results from generative models
-
-#### RAG Architecture
-- Complete understanding of RAG workflows from data ingestion to text generation
-- How embeddings enable semantic search and improve retrieval quality
-- Practical knowledge of implementing RAG systems on AWS
-
-#### AWS Service Ecosystem
-- Comprehensive overview of AWS AI/ML services and when to use each
-- Understanding that different services solve different problems
-- How services can be combined for complex solutions
-
-#### Agent Development
-- Understanding the complexity of building production-ready AI agents
-- Key components needed for scalable agent systems
-- Best practices for agent design and deployment
-
-### Personal Takeaways
-
-#### Technical Growth
-- I gained a structured mental model of the modern GenAI stack on AWS
-- I understand how RAG pipelines are built end-to-end, from data preparation to response generation
-- I learned which managed services to combine when designing AI-powered applications
-
-#### Practical Insights
-- The importance of prompt engineering cannot be overstated
-- RAG is a powerful pattern for building accurate, context-aware AI applications
-- AWS provides a comprehensive set of services that cover the entire AI/ML spectrum
-
-#### Future Applications
-- I'm excited to build RAG-based applications using Amazon Bedrock and Titan embeddings
-- I want to explore building agents using AgentCore for specific use cases
-- I see opportunities to combine multiple AWS AI services for comprehensive solutions
-
-#### Career Development
-- This event reinforced my interest in AI/ML and generative AI
-- I understand the breadth of opportunities in the AI space on AWS
-- I'm motivated to continue learning about advanced AI/ML techniques and AWS services
-
-### Event Experience
-
-This was an incredibly informative event that provided both breadth and depth. The progression from fundamentals to specific services to advanced agent development gave me a complete picture of AI/ML on AWS.
-
-The speakers were knowledgeable and provided practical insights beyond just feature descriptions. The real-world examples and use cases helped me understand how to apply these services in practice.
-
-The event structure allowed for good pacing, with each session building on previous concepts. The combination of theory and practical examples made complex topics accessible.
+- **The Essence of IaC:** It's not just about automation; the core value proposition is bringing **Version Control to Infrastructure**, treating infrastructure reviews with the same scrutiny as code reviews.
+- **The Risk of Configuration Drift:** Drift is a terrifying hidden risk in Production environments. Strict CI/CD processes paired with Drift Tracking tooling are mandatory to prohibit manual ClickOps modifications.
+- **The Reality of CDK and Amplify:** CDK is essentially an abstraction layer. After you "synth" (compile) it, it generates standard CloudFormation templates. Similarly, AWS Amplify relies heavily on CloudFormation mechanisms under the hood.
+- **Terraform as the Standard:** Terraform continues to assert itself as the **de facto industry standard** due to its unparalleled cross-platform capabilities.
 
 ### Event Photos
 
